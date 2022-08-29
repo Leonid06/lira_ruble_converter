@@ -19,8 +19,9 @@ class Service  {
     
     private func performRequest(url : String, completion: @escaping (CurrencyPair?, Error?)-> Void ){
         if let url = URL(string: url){
+            let request = URLRequest(url: url, cachePolicy: URLRequest.CachePolicy.reloadIgnoringLocalCacheData, timeoutInterval: 60)
             let session = URLSession(configuration: .default)
-            let task = session.dataTask(with: url) { data, response, error in
+            let task = session.dataTask(with: request) { data, response, error in
                 if error != nil {
                     print("Data fetched")
                     completion(nil, error)

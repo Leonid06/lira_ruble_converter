@@ -27,11 +27,11 @@ class Repository : ObservableObject {
     private let service = Service.shared
     
     
-    func addPair(from : String, to : String, rate : Double){
-        let pair = Pair(context: context)
-        pair.rate = rate
-        pair.code = from + to
-    }
+//    func addPair(from : String, to : String, rate : Double){
+//        let pair = Pair(context: context)
+//        pair.rate = rate
+//        pair.code = from + to
+//    }
     
     
     func getPrice(for code : Code, amount : Double) -> Double? {
@@ -55,7 +55,7 @@ class Repository : ObservableObject {
         
         fetchRates()
         
-        timer = Timer.scheduledTimer(withTimeInterval: 15, repeats: true){
+        timer = Timer.scheduledTimer(withTimeInterval: 600, repeats: true){
             _ in
             self.fetchRates()
         }
